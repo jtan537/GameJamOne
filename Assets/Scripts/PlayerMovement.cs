@@ -6,18 +6,16 @@ public class PlayerMovement : MonoBehaviour
 
 {
 	public Rigidbody _rb;
-	public float forwardForce = 200f;
-	public float sidewaysForce = 50f;
+	public float forwardForce = 5000f;
+	public float sidewaysForce = 80f;
 	public float upForce = 50f;
 	public bool moveLeft = false;
 	public bool moveRight = false;
 	public bool moveUp = false;
 
-    public float _jumpDelay = 1f;
-    public float jumpForce = 2f;
+    public float _jumpDelay = 0.5f;
+    public float jumpForce = 20f;
     public bool canJump = true;
-    public float _jumpStartTime;
-    public float maxJumpDuration;
 
 
     // Start is called before the first frame update
@@ -31,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
             canJump = false;
-            _jumpStartTime = Time.time;
             StartCoroutine(Delay());
         }
     }
