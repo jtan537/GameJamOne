@@ -17,9 +17,15 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 20f;
     public bool canJump = true;
 
+    private AudioSource _fartSound;
+
 
     // Start is called before the first frame update
 
+    void Start()
+    {
+        _fartSound = GameObject.Find("FartSoundManager").GetComponent<AudioSource>();
+    }
 
     void Update() {
     	moveLeft = Input.GetKey("a");
@@ -29,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
             canJump = false;
+            _fartSound.Play();
             StartCoroutine(Delay());
         }
     }
@@ -45,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
     		_rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
     	}
-       
-
-        if (_rb.position.y < -1f) {
-            FindObjectOfType<GameManager>().EndGame();
-        }
         
     }
 
