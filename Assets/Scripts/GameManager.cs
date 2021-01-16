@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     public Vector3 startPosition = new Vector3(0, 1.5f, 0);
+
+    public Text scoreText;
 
     public void CompleteLevel()
     {
@@ -32,21 +35,13 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        player.position = startPosition;
-        gameHasEnded = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // player.position = startPosition;
+        // scoreText.text = "0";
+        // GetComponent<PlayerMovement>().enabled = true;
+        // gameHasEnded = false;
 
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
